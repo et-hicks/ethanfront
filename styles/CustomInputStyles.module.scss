@@ -1,0 +1,104 @@
+$primaryColor : #9c27b0;
+$warningColor : #ff9800;
+$dangerColor : #f44336;
+$successColor : #4caf50;
+$infoColor : #00acc1;
+$roseColor : #e91e63;
+$grayColor : #999999;
+
+// Not used, simply used as an import, and then as a placeholder
+.defaultFont {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+.disabled {
+    :before {
+        border-color: transparent !important;
+    }
+}
+
+.underline {
+    :hover:not(.disabled):before,:before {
+        border-color: #D2D2D2 !important;
+        border-width: 1px !important;
+    }
+    :after {
+        border-color: $primaryColor;
+    }
+}
+
+.underlineError {
+    :after {
+        border-color: $dangerColor
+    }
+}
+
+.underlineSuccess {
+    :after {
+        border-color: $successColor
+    }
+}
+
+.whiteUnderline {
+    :hover:not(.disabled):before,:before {
+        border-color: #FFFFFF
+    }
+    :after{
+        border-color: #FFFFFF
+    }
+}
+
+.labelRoot {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #AAAAAA !important;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.42857;
+    top: 10px;
+    letter-spacing: unset;
+    :underline {
+        margin-top: 0px
+    }
+}
+
+.labelRootError {
+    color: $dangerColor !important;
+}
+
+.labelRootSuccess {
+    color: $successColor !important;
+}
+
+.formControl {
+    margin: 0 0 17px 0;
+    padding-top: 27px;
+    position: relative;
+    svg,.fab, .far, .fal, .fas, .material-icons {
+        color: #495057
+    }
+}
+
+.input {
+    color: #495057;
+    height: unset;
+    ::placeholder {
+        font-size: 14px;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: 400;
+        line-height: 1.42857;
+        opacity: 1;
+    }
+    ::placeholder {
+        color: #AAAAAA;
+    }
+}
+.whiteInput {
+    ::placeholder {
+        color: #FFFFFF;
+        opacity: 1;
+    }
+  }

@@ -1,0 +1,63 @@
+$primaryColor : #9c27b0;
+$warningColor : #ff9800;
+$dangerColor : #f44336;
+$successColor : #4caf50;
+$infoColor : #00acc1;
+$roseColor : #e91e63;
+$grayColor : #999999;
+
+
+.infoArea {
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 0px;
+}
+.iconWrapper {
+    float: left;
+    margin-top: 24px;
+    margin-right: 10px;
+}
+.primary {
+    color: $primaryColor
+  }
+.warning {
+    color: $warningColor
+}
+.danger {
+    color: $dangerColor
+}
+.success {
+    color: $successColor
+}
+.info {
+    color: $infoColor
+}
+.rose {
+    color: $roseColor
+}
+.gray {
+    color: $grayColor
+}
+.icon {
+    width: 36px;
+    height: 36px;
+  }
+.descriptionWrapper {
+    color: $grayColor;
+    overflow: hidden;
+}
+
+// Do I need more in the title here?
+.title, .description {
+    color: $grayColor;
+    overflow: hidden;
+    margin-top: 0px;
+    font-size: 14px;
+}
+.iconWrapperVertical {
+    float: none;
+}
+.iconVertical {
+    width: 61px;
+    height: 61px;
+}

@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from "react";
+import Link from 'next/link';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // nodejs library that concatenates classes
@@ -7,79 +8,40 @@ import classNames from "classnames";
 // material-ui core components
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Button from "../../components/CustomButtons/Button";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
-import styles from "../../assets/jss/material-kit-react/components/footerStyle.js";
+// import styles from "../../assets/jss/material-kit-react/components/footerStyle.js";
 
-const useStyles = makeStyles(styles);
+// const useStyles = makeStyles(styles);
+
+import FooterStyles from "../../styles/Footer.module.scss";
+
 
 export default function Footer(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { whiteFont } = props;
-  const footerClasses = classNames({
-    [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont
-  });
-  const aClasses = classNames({
-    [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont
-  });
+  const footerClasses = classNames(FooterStyles.footer, FooterStyles.footerWhiteFont);
+  const aClasses = classNames(FooterStyles.a, FooterStyles.footerWhiteFont);
   return (
     <footer className={footerClasses}>
-      <div className={classes.container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Creative Tim
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/presentation?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                About us
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="http://blog.creative-tim.com/?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Blog
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/license?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Licenses
-              </a>
+      <div className={FooterStyles.container}>
+        <div className={FooterStyles.left}>
+          <List className={FooterStyles.list}>
+            <ListItem className={FooterStyles.inlineBlock}>
+              <Link href="/">
+                <Button>
+                  Home Page
+                </Button>
+              </Link>
             </ListItem>
           </List>
         </div>
-        <div className={classes.right}>
+        <div className={FooterStyles.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={classes.icon} /> by{" "}
-          <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
-            className={aClasses}
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
+          <Favorite className={FooterStyles.icon} /> by{" "}
+            For me to get a job
         </div>
       </div>
     </footer>

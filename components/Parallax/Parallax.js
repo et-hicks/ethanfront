@@ -3,13 +3,9 @@ import React from "react";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
 
-// core components
-import styles from "../../assets/jss/material-kit-react/components/parallaxStyle.js";
 
-const useStyles = makeStyles(styles);
+import ParallaxStyles from "../../styles/Parallax.module.scss";
 
 export default function Parallax(props) {
   let windowScrollTop;
@@ -36,16 +32,11 @@ export default function Parallax(props) {
     setTransform("translate3d(0," + windowScrollTop + "px,0)");
   };
   const { filter, className, children, style, image, small } = props;
-  const classes = useStyles();
-  const parallaxClasses = classNames({
-    [classes.parallax]: true,
-    [classes.filter]: filter,
-    [classes.small]: small,
-    [className]: className !== undefined
-  });
+  // const classes = useStyles();
+  // const parallaxClasses = classNames(ParallaxStyles.parallax, ParallaxStyles.filter, ParallaxStyles.small);
   return (
     <div
-      className={parallaxClasses}
+      className={ParallaxStyles.parallax}
       style={{
         ...style,
         backgroundImage: "url(" + image + ")",

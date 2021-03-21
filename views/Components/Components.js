@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Footer from "../../components/Footer/Footer.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
-import Button from "../../components/CustomButtons/Button.js";
+import Button from "../../components/CustomButtons/Button";
 // import Parallax from "../../components/Parallax/Parallax.js";
 // sections for this page
 import SectionBasics from "./Sections/SectionBasics.js";

@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridContainer from "../../../components/Grid/GridContainer.js";
 import GridItem from "../../../components/Grid/GridItem.js";
-import Button from "../../../components/CustomButtons/Button.js";
+import Button from "../../../components/CustomButtons/Button";
 
 // import landing from "../../../public/img/landing.jpg";
 // import profile from "../../../public/img/profile.jpg";

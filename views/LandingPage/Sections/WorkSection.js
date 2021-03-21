@@ -1,41 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-// @material-ui/icons
+import WorkStyle from "../../../styles/WorkStyle.module.scss";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
+import GridContainer from "../../../components/Grid/GridContainer.js"; // done with css
+import GridItem from "../../../components/Grid/GridItem.js"; // done with css
+import CustomInput from "../../../components/CustomInput/CustomInput.js";
+import Button from "../../../components/CustomButtons/Button"; // Done with css
 
-import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
-
-const useStyles = makeStyles(styles);
 
 export default function WorkSection() {
-  const classes = useStyles();
+  
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [company, setCompany] = useState("")
+  const [message, setMessage] = useState("")
+
+  console.log(email, name, company, message);
+
+  const handleName = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  }
+
+  const handleCompany = (e) => {
+    e.preventDefault();
+    setCompany(e.target.value);
+  }
+
+  const handleEmail = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  }
+
+  const handleMessage = (e) => {
+    e.preventDefault();
+    setMessage(e.target.value);
+  }
+  
+  const inputEmailProps =  {
+    onChange: handleEmail
+  }
+
+  const inputNameProps = {
+    onChange: handleName
+  }
+
+  const inputCompanyProps = {
+    onChange: handleCompany
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    console.log("stuff happens");
+
+  }
+
+
   return (
-    <div className={classes.section}>
+    <div className={WorkStyle.section}>
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Work with us</h2>
-          <h4 className={classes.description}>
-            Divide details about your product or agency work into parts. Write a
-            few lines about each one and contact us about any further
-            collaboration. We will responde get back to you in a couple of
-            hours.
+          <h2 className={WorkStyle.title}>Contact Me</h2>
+          <h4 className={WorkStyle.description}>
+            Said above, I'm actively looking for work. Contact me for a chat. Lets talk about
+            Front End, Back End, or Machine Learning work. 
           </h4>
           <form>
             <GridContainer>
-              <GridItem xs={12} sm={12} md={6}>
+              <GridItem xs={8} sm={12} md={12}>
                 <CustomInput
                   labelText="Your Name"
                   id="name"
                   formControlProps={{
                     fullWidth: true
                   }}
+                  inputProps={inputNameProps}
+                />
+              </GridItem>
+              <GridItem xs={8} sm={12} md={6}>
+                <CustomInput
+                  labelText="Company Name"
+                  id="name"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={inputCompanyProps}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
@@ -45,22 +98,26 @@ export default function WorkSection() {
                   formControlProps={{
                     fullWidth: true
                   }}
+                  inputProps={inputEmailProps}
                 />
               </GridItem>
-              <CustomInput
-                labelText="Your Message"
-                id="message"
-                formControlProps={{
-                  fullWidth: true,
-                  className: classes.textArea
-                }}
-                inputProps={{
-                  multiline: true,
-                  rows: 5
-                }}
-              />
+              <GridItem xs={12} sm={12} md={12}>
+                <CustomInput
+                  labelText="Your Message"
+                  id="message"
+                  formControlProps={{
+                    fullWidth: true,
+                    className: WorkStyle.textArea
+                  }}
+                  inputProps={{
+                    multiline: true,
+                    rows: 5,
+                    onChange: handleMessage,
+                  }}
+                />
+              </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" onClick={submitForm}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>

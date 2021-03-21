@@ -1,0 +1,56 @@
+.block {
+    color: inherit;
+    padding: 0.9375rem;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    display: block;
+}
+.left {
+    float: left!important;
+    display: block;
+}
+.right {
+    padding: 15px 0;
+    margin: 0;
+    float: right!important;
+}
+
+.footer {
+    padding: 0.9375rem 0;
+    text-align: center;
+    display: flex;
+    z-index: 2;
+    position: relative;
+}
+.a {
+    color: #9c27b0;
+    text-decoration: none;
+    background-color: transparent;
+}
+.footerWhiteFont {
+    :hover, :focus {
+        color: #000000;
+    } 
+}
+.container, .list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+.inlineBlock {
+    display: inline-block;
+    padding: 0px;
+    width: auto;
+    vertical-align: auto;
+    // float: none;
+}
+.icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 3px;
+}

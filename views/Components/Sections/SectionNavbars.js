@@ -18,7 +18,7 @@ import GridItem from "../../../components/Grid/GridItem.js";
 // import Header from "../../../components/Header/Header.js";
 import CustomInput from "../../../components/CustomInput/CustomInput.js";
 import CustomDropdown from "../../../components/CustomDropdown/CustomDropdown.js";
-import Button from "../../../components/CustomButtons/Button.js";
+import Button from "../../../components/CustomButtons/Button";
 
 // import image from "../../../public/img/bg.jpg";
 // import profileImage from "../../../public/img/faces/avatar.jpg";

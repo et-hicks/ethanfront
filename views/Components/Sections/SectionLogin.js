@@ -13,7 +13,7 @@ import Card from "../../../components/Card/Card.js";
 import CardHeader from "../../../components/Card/CardHeader.js";
 import CardBody from "../../../components/Card/CardBody.js";
 import CardFooter from "../../../components/Card/CardFooter.js";
-import Button from "../../../components/CustomButtons/Button.js";
+import Button from "../../../components/CustomButtons/Button";
 import CustomInput from "../../../components/CustomInput/CustomInput.js";
 
 import styles from "../../../assets/jss/material-kit-react/views/componentsSections/loginStyle.js";
