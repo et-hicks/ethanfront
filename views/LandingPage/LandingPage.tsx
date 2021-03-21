@@ -34,6 +34,7 @@ export default function LandingPage(props) {
 
       <Parallax filter image={require("../../public/img/BucksAndThompson.jpg")}>
         <div className={landingPageStyles.container} >
+          {/* @ts-ignore */}
           <GridContainer justify={"center"} style={{padding: "70px 0"}}>
             {/* @ts-ignore */}
             <GridItem xs={12} sm={12} md={8} >
