@@ -33,7 +33,7 @@ export default function ProfilePage(props) {
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
-      <Parallax small filter image={require("../../public/img/profile-bg.jpg")} />
+      <Parallax small filter image={"/img/profile-bg.jpg"} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
           <div className={classes.container}>

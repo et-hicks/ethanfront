@@ -11,6 +11,10 @@
 # next.js
 /.next/
 /out/
+src/.next/
+.next
+.next/
+nextjs/
 
 # production
 /build
@@ -32,3 +36,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+# vs code
+.vscode
+.vscode/
+
+
+.firebase/

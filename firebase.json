@@ -1,5 +1,4 @@
 {
-  "runtime": "nodejs12",
   "database": {
     "rules": "database.rules.json"
   },
@@ -9,6 +8,7 @@
   },
   "functions": {
     "source": ".",
+    "runtime": "nodejs12",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -18,7 +18,10 @@
       "public/**",
       "README.md",
       "styles/**",
-      "state/**"
+      "state/**",
+      "assets/**",
+      "Customs/**",
+      "views/**"
     ]
   },
   "hosting": {
