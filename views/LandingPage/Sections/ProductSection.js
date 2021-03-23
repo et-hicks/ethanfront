@@ -13,8 +13,6 @@ import GridContainer from "../../../components/Grid/GridContainer.js";
 import GridItem from "../../../components/Grid/GridItem.js";
 import InfoArea from "../../../components/InfoArea/InfoArea.js";
 
-import * as ReactIcon from "../../../public/svg/react-seeklogo.svg";
-
 
 import ProductSectionStyles from "../../../styles/ProductSection.module.scss"
 
@@ -44,9 +42,9 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="React"
-              description="Built for the modern web, React's modularity makes development easier. Coupled with built-in interactivity that comes as expected in the modern web, I have chosed React for my front end."
+              description="Built for the modern web, React's modularity makes development easier. Coupled with built-in interactivity that comes as expected in the modern web, I have chosen React for my front end."
               iconColor="info"
-              stringImg="/svg/react-seeklogo.svg"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2Freact-seeklogo.svg?alt=media&token=d12f8d6d-6dc9-40d5-8c19-6f314c44f038"
               height={100}
               width={100}
               vertical
@@ -56,7 +54,7 @@ export default function ProductSection() {
             <InfoArea
               title="Nextjs"
               description="While React offers amazing functionality, it lacks on SEO capabilities. To appear high on Google, Nextjs offers the very best. Futhermore, Nextjs's caching capabilites mean time to first byte is as fast as possible so site functionality begins as soon as possible."
-              stringImg="/svg/next-js-seeklogo.com.svg"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2Fnext-js-seeklogo.com.svg?alt=media&token=3f9d5d9c-1723-4ea0-9647-8c0c5242dbf2"
               height={100}
               width={100}
               iconColor="success"
@@ -67,7 +65,7 @@ export default function ProductSection() {
             <InfoArea
               title="Firebase"
               description="Firebase, cause its quick to learn, quick to deploy, and quick to get a site up and running."
-              stringImg="/svg/Firebase_Logo_Standard_Lockup.svg"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FFirebase_Logo_Standard_Lockup.svg?alt=media&token=a1cc3b16-483d-4a32-b887-3b682fb39760"
               height={100}
               width={100}
               iconColor="success"
@@ -78,7 +76,7 @@ export default function ProductSection() {
             <InfoArea
               title="Nodejs"
               description="Full Stack Javascript might not work in every instance, and certanly doesnt even work in every instance on this site, but its quick, easy, and works in a pinch"
-              stringImg="/img/Nodejs.png"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FNodejs.png?alt=media&token=418de48b-193b-4ecb-ace8-64933558133e"
               height={60}
               width={100}
               iconColor="success"
@@ -89,7 +87,7 @@ export default function ProductSection() {
             <InfoArea
               title="Express"
               description="What even is Full Stack Javascript without express on the backend? The two go hand in hand, and its difficult to use one without the other. "
-              stringImg="/img/Expressjs.png"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FExpressjs.png?alt=media&token=bd3c0ae0-c97d-4305-b882-bb0bc7aa59b7"
               height={30}
               width={100}
               iconColor="success"
@@ -100,7 +98,7 @@ export default function ProductSection() {
             <InfoArea
               title="More to come"
               description="The site will expand as I add more and more to it. Flask will be added on the backend to take advantace of Python's capabilities (notably in ML). For now, the site lacks this."
-              stringImg="/img/Flask_logo.png"
+              stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FFlask_logo.png?alt=media&token=4b8d8037-6dc7-45d6-9f70-9a23ca46a2b3"
               height={40}
               width={100}
               iconColor="success"

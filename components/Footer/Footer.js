@@ -40,8 +40,8 @@ export default function Footer(props) {
         </div>
         <div className={FooterStyles.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={FooterStyles.icon} /> by{" "}
-            For me to get a job
+          <Favorite className={FooterStyles.icon} />
+            
         </div>
       </div>
     </footer>
