@@ -135,4 +135,4 @@ export default function Table({rows, columns}: TableProps) {
         {controller}
         <div className={TableStyles.outer}>{generatedTable}</div>
     </div>)
-}
+} // commit for master
