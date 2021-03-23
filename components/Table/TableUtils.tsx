@@ -61,7 +61,15 @@ const AStar = (start: number[], goal: number[], h: Function) => {
     fScore[startHash] = h(start, goal)
 
     while (openSet.length > 0) {
-        // current = smallest in openSet
+        // smallest fScore value
+        current = openSet.shift();
+
+        if (current === goal) {
+            return reconstructPath(cameFrom, current);
+        }
+
+        
+
     }
 }
 
