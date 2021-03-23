@@ -39,23 +39,20 @@ export default function HeaderLinks(props) {
             <Link href="/" >
               <a className={classes.dropdownLink}>Home Page</a>
             </Link>,
-            <a
-              className={classes.dropdownLink}
-            >
-              Documentation
-            </a>
+            <Link href="/path-finding">
+              <a className={classes.dropdownLink}>Path Finding</a>
+            </Link>
           ]}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
+        <Link href="/path-finding">
         <Button
-          href="https://www.creative-tim.com/product/material-kit-react?ref=mkr-navbar"
-          color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+          <CloudDownload className={classes.icons} /> Path Finder
         </Button>
+        </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">
@@ -63,7 +60,7 @@ export default function HeaderLinks(props) {
             <DeleteIcon />
           </IconButton>
         </Tooltip>*/}
-        <Tooltip
+        {/* <Tooltip
           id="instagram-twitter"
           title="hover for example"
           placement={window.innerWidth > 959 ? "top" : "left"}
@@ -77,8 +74,8 @@ export default function HeaderLinks(props) {
           >
             Youtube
             <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
+          </Button> */}
+        {/* </Tooltip> */}
       </ListItem>
     </List>
   );

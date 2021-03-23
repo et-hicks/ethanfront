@@ -10,6 +10,7 @@ import GridItem from "../../../components/Grid/GridItem.js"; // done with css
 import CustomInput from "../../../components/CustomInput/CustomInput.js";
 import Button from "../../../components/CustomButtons/Button"; // Done with css
 
+import { backendAddress } from "../../../Customs/constants.ts";
 
 export default function WorkSection() {
   
@@ -55,8 +56,29 @@ export default function WorkSection() {
   const submitForm = (e) => {
     e.preventDefault();
 
-    console.log("stuff happens");
-
+    if (email !== "" && name !== "" && company !== "" && message !== "") {
+      
+      const fd = {
+        name: name,
+        company: company, 
+        email: email,
+        message: message
+      }
+  
+      console.log("fd is: ", fd, `${backendAddress}/contactMe`);
+      
+      
+      fetch(`${backendAddress}/contactMe`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(fd)
+      }).then(response => {
+        return response.json()
+      }).then(data => console.log(data))
+    }
   }
 
 
