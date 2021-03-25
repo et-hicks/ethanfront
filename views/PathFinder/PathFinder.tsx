@@ -40,7 +40,7 @@ export default function PathFinder() {
         setTableVals([parseInt(rows), parseInt(cols)])
         setGraph(createGraph(parseInt(rows), parseInt(cols)))
     }
-
+    // @ts-ignore
     const rowInput = (<GridItem xs={12} sm={4} md={4} lg={3}>
         <CustomInput
           labelText="Rows"
@@ -52,6 +52,7 @@ export default function PathFinder() {
         />
       </GridItem>);
     
+    // @ts-ignore
     const colInput = (<GridItem xs={12} sm={4} md={4} lg={3}>
         <CustomInput
           labelText="Columns"
@@ -68,6 +69,7 @@ export default function PathFinder() {
         <GridContainer>
             {rowInput}
             {colInput}
+            {/* @ts-ignore */}
             <GridItem xs={12} sm={4} md={4} lg={3}>
                 <Tooltip placement="top" title={"Make a new table"} enterDelay={1500}>
                     <span>
