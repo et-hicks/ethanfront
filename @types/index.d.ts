@@ -19,4 +19,10 @@ type SetType = {
     node: GraphNode,
     gNumber: number;
     fNumber: number;
+    distance: number;
+}
+
+type AStarAnswer = {
+    answer: string[];
+    considered: string[];
 }

@@ -6,7 +6,7 @@ import TableStyles from '../../styles/PathFinder/Table.module.scss';
 
 // exported for table modification
 const changeTableClass = (row: number, col: number, toClass: string) => {
-    console.log("row: ", row, 'col: ', col);
+    // console.log("row: ", row, 'col: ', col);
     const tableData = document.getElementById(`point ${row}-${col}`);
 
     tableData.className = `${TableStyles.inner} ${toClass}`;
@@ -16,7 +16,7 @@ const changeTableClass = (row: number, col: number, toClass: string) => {
 const createTable = (rows: number, cols: number, clicked?: Function) => {
 
     const clicker = (row: number, col: number) => {
-        console.log("clicker", row, col);
+        // console.log("clicker", row, col);
         clicked?.(row, col)
     }
 
@@ -30,7 +30,8 @@ const createTable = (rows: number, cols: number, clicked?: Function) => {
                             className={`${TableStyles.inner} ${TableStyles.unvisited}`} 
                             onClick={() => clicker(row, col)}
                             >
-                                {row}-{col}
+                                {" "}
+                                {/* {row}-{col} */}
                             </div>
             gridRow.push(point)
         }
@@ -42,7 +43,7 @@ const createTable = (rows: number, cols: number, clicked?: Function) => {
                         {gridRow}
                     </div>)
     }
-    console.log(grid);
+    // console.log(grid);
     return grid
 }
 
@@ -88,7 +89,7 @@ const modifyGraph = (g: Graph, row: number, col: number, w_v: string, bool: bool
 }
 
 // exported for path finding
-const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows: number, cols: number): string[] => {
+const AStar = (graph: Graph, start: number[], goal: number[], h: Function): AStarAnswer => {
     // console.log(graph);
     const startHash = pointToHash(start);
     const goalHash = pointToHash(goal);
@@ -96,6 +97,7 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
     // will prolly become a sorted array instead.
     // This is small enough, and fast enough, that it ought to work
     const openSet: SetType[] = [];
+    const consideredNodes: string[] = [startHash];
     const startSet: SetType = {
         node: graph[startHash],
         gNumber: 0,
@@ -112,22 +114,28 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
     const fScore = {}
     fScore[startHash] = h(start, goal)
 
+    // let iter = 0;
     while (openSet.length > 0) {
         // smallest fScore value first
         const { node, gNumber, fNumber, distance} = openSet.shift();
+        // console.log(node, gNumber, fNumber, distance);
 
         if (node.pointHash === goalHash) {
-            return reconstructPath(cameFrom, node.pointHash);
+            const answer = reconstructPath(cameFrom, node.pointHash);
+            return {answer: answer, considered: consideredNodes}
         }
+        // iter++
 
         for (let neighbor of node.neighbors) {
             // console.log(neighbor, node.neighbors, gScore[neighbor]);
             if (graph[neighbor].wall) continue // Can't add walls 
             // console.log(graph[neighbor].point, node.point, openSet);
-            const distance = dis(graph[neighbor].point, start);
+            const distance = dis(graph[neighbor].point, goal);
+            // console.log('distance: ', distance, neighbor, openSet);
+
             const tentative_gScore = gNumber + distance; // d is always 1
             
-            if (gScore[neighbor] === undefined) gScore[neighbor] = Number.POSITIVE_INFINITY;
+            if (gScore[neighbor] === undefined) gScore[neighbor] = Number.POSITIVE_INFINITY
 
 
             if (tentative_gScore < gScore[neighbor]) {
@@ -135,10 +143,11 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
                 cameFrom.set(neighbor, node.pointHash);
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + h(graph[neighbor].point, goal);
-                
-                console.log("considered: ", neighbor, gScore[neighbor], fScore[neighbor], gNumber, tentative_gScore, distance);
+                // consideredNodes.push(neighbor)
+                // console.log("considered: ", neighbor, gScore[neighbor], fScore[neighbor], gNumber, tentative_gScore, distance);
 
                 if (!inOpenSet(openSet, neighbor)) {
+                    consideredNodes.push(neighbor)
                     const neighborNode: SetType = {
                         node: graph[neighbor],
                         gNumber: tentative_gScore,
@@ -148,19 +157,23 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
                     openSet.push(neighborNode);
                     // This is why we need minHeaps
                     openSet.sort((a: SetType, b: SetType) => {
-                        return a.fNumber <= b.fNumber ? 1 : -1; 
-                        // if (a.fNumber > b.fNumber) {
-                        //     return 1
-                        // } else if (a.fNumber < b.fNumber) {
-                        //     return -1
-                        // } else if (a.fNumber === b.fNumber) {
-
-                        // }
+                        // return a.fNumber >= b.fNumber ? 1 : -1; 
+                        if (a.fNumber > b.fNumber) {
+                            return 1
+                        } else if (a.fNumber < b.fNumber) {
+                            return -1
+                        } else if (a.fNumber === b.fNumber) {
+                            // sort based on smallest distance whenever the fNumber is equal
+                            // should be an optimization
+                            return a.gNumber >= b.gNumber ? 1 : -1
+                        }
                     });
-                }
+                } 
             }
         }
     }
+
+    return {answer: [], considered: consideredNodes}
 }
 
 const reconstructPath = (cameFrom: Map<string, string>, current: string): string[] => {
@@ -191,11 +204,12 @@ const pointToHash = (point: number[]): string => {
     return `${point[0]}_${point[1]}`;
 }
 
-const disanceHeuristic = (start: number[], goal: number[]): number => {
+const disanceHeuristic = (node: number[], goal: number[]): number => {
     // manhatten distance OR the L1 norm
-    const dis = Math.abs((start[0] - goal[0])) + Math.abs((start[1] - goal[1]))
+    const x = Math.abs((node[0] - goal[0]))
+    const y = Math.abs((node[1] - goal[1]))
     // console.log(dis);
-    return dis
+    return x + y
 }
 
 const dis = (start: number[], goal: number[]): number => {
@@ -212,6 +226,7 @@ const dis = (start: number[], goal: number[]): number => {
 
 const hashToPoint = (hash: string): number[] => {
     const strArr = hash.split('_');
+    // console.log(hash, strArr);
     return [parseInt(strArr[0]), parseInt(strArr[1])]
 }
 
@@ -237,8 +252,17 @@ const minHeapify =  (array, index) => {
     array[index] = temp
   }
 
+const stateUndefined = (state): boolean => {
+    if (state["row"] === undefined || state["col"] === undefined) {
+        return true
+    }
+    return false
+}
 
-
+const objToHash = (state) => {
+    return `${state.row}_${state.col}`;
+}
+ 
 
 export {
     createTable,
@@ -246,5 +270,8 @@ export {
     createGraph,
     modifyGraph,
     AStar,
-    disanceHeuristic
+    disanceHeuristic,
+    stateUndefined,
+    objToHash,
+    hashToPoint
 }

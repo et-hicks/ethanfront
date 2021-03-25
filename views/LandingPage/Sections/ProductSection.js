@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -20,6 +21,19 @@ export default function ProductSection() {
 
   return (
     <div className={ProductSectionStyles.section}>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={8}>
+          <h2 className={ProductSectionStyles.title}>Pathfinding</h2>
+          <h5 className={ProductSectionStyles.description}>
+            The first programmed section of the website is now up. Check out <Link href="/path-finding"><span style={{color: "blue"}}>Path Finding </span></Link>
+            to find the distance between any two points, using the efficient A Star Algorithm.
+          </h5>
+          <h5 className={ProductSectionStyles.description}>
+            I felt it only fitting to use the classic path-finding as the first programmed web page here. Tried and true, it stands as an excellent introduction to
+            algorithms in general. Going back, and working through it again was a fantastic trip down memory lane, and also a great way to get warmed up with the site.
+          </h5>
+        </GridItem>
+      </GridContainer>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={ProductSectionStyles.title}>About Me</h2>

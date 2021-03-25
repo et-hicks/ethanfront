@@ -6,10 +6,12 @@ import Radio from "@material-ui/core/Radio";
 import Face from "@material-ui/icons/Face";
 
 import CustomTabs from "../../components/CustomTabs/CustomTabs.js"
+import {Button} from "@material-ui/core";
 
-import { createTable, changeTableClass, modifyGraph, AStar, disanceHeuristic } from "./TableUtils";
+import { createTable, changeTableClass, hashToPoint, modifyGraph, AStar, disanceHeuristic, stateUndefined, objToHash } from "./TableUtils";
 
 import TableStyles from '../../styles/PathFinder/Table.module.scss';
+import { Tooltip } from '@material-ui/core';
 
 enum TableInside {
     start = 1,
@@ -29,16 +31,27 @@ export default function Table({rows, columns, graph}: TableProps) {
     // let board = <table id='board' dangerouslySetInnerHTML={createTable(4, 4)} />;
     
     const [boardValue, setBoardValue] = useState<number>(1)
-    const [startVal, setStartVal] = useState({row: 0, col: 0})
-    const [endVal, setEndVal] = useState({row: rows-1, col: columns-1})
-    
+    const [startVal, setStartVal] = useState({row: undefined, col: undefined})
+    const [endVal, setEndVal] = useState({row: undefined, col: undefined})
+    const [disableButton, setDisabledButton] = useState(true)
     // const [board, setBoard] = useState(null)
-    
+
+    useEffect(() => {
+        if (!stateUndefined(startVal) && !stateUndefined(endVal)) {
+            setDisabledButton(false);
+        } else {
+            setDisabledButton(true);
+        };
+
+    }, [startVal, endVal])
+
+
+
     // useEffect(() => {
         
     // maybe have a useContext here?
-        const generatedTable = createTable(4, 4, (row: number, col: number) => {
-            console.log("table row: ", row, "col: ", col, "boardvalue: ", boardValue);
+        const generatedTable = createTable(rows, columns, (row: number, col: number) => {
+            // console.log("table row: ", row, "col: ", col, "boardvalue: ", boardValue);
             if (boardValue === TableInside.start) {
                 // revert the current start to unvisited
                 // set the new start
@@ -93,7 +106,48 @@ export default function Table({rows, columns, graph}: TableProps) {
     // }, [])
     const startArr = [startVal["row"], startVal["col"]];
     const endArr = [endVal["row"], endVal["col"]];
-    console.log(graph, "The answer is: ", AStar(graph, startArr, endArr, disanceHeuristic, rows, columns));
+    // console.log(graph, "The answer is: ", AStar(graph, startArr, endArr, disanceHeuristic));
+    
+    const viz = (e) => {
+        e.preventDefault();
+        const {answer, considered} = AStar(graph, startArr, endArr, disanceHeuristic);
+        
+        for (let hash of considered) {
+            if (hash === objToHash(startVal) || hash === objToHash(endVal)) {
+                continue
+            }
+            const pt = hashToPoint(hash);
+            
+            changeTableClass(pt[0], pt[1], TableStyles.visited)
+        }
+
+        if (answer === undefined) return
+
+        for (let i = 0; i < answer.length; i ++) {
+            setTimeout(() => {
+                const hash = answer[i];
+                if (hash === objToHash(startVal) || hash === objToHash(endVal)) {
+                    return
+                }
+                const pt = hashToPoint(hash);
+                
+                changeTableClass(pt[0], pt[1], TableStyles.inpath);
+            }, i * 250)
+        }
+    }
+
+    const clearTable = (e) => {
+        setStartVal({row: undefined, col: undefined})
+        setEndVal({row: undefined, col: undefined})
+        e.preventDefault();
+        for (let i = 0; i < rows; i ++) {
+            for (let j = 0; j < columns; j++) {
+                changeTableClass(i, j, TableStyles.unvisited);
+                modifyGraph(graph, i, j, "wall", false);
+            }
+        }
+    }
+
 
     const controller = <div>
         <FormControlLabel
@@ -138,9 +192,34 @@ export default function Table({rows, columns, graph}: TableProps) {
         />
     </div>
 
+    const visualizeButton = (<div>
+        <Tooltip placement="top" title={!disableButton ? "Visualize a path" : "You need to set a start and a goal first"}>
+            <span>
+                <Button onClick={viz} disabled={disableButton}>
+                    Visualize the path with A Star
+                </Button>
+            </span>
+        </Tooltip>
+    </div>);
+
+    const clearButton = (<div>
+        <Tooltip placement="top" title={"clear everything on the board"}>
+            <span>
+                <Button onClick={clearTable}>
+                    Clear everything
+                </Button>
+            </span>
+        </Tooltip>
+    </div>);
+
+
     return (<div>
         HTML table
         {controller}
-        <div className={TableStyles.outer}>{generatedTable}</div>
+        <div style={{maxHeight: "60vh", maxWidth: "60vw"}}>
+            <div className={TableStyles.outer}>{generatedTable}</div>
+        </div>
+        {visualizeButton}
+        {clearButton}
     </div>)
 } // commit for master // another commit for master

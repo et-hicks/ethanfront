@@ -1,4 +1,4 @@
-.wall{
+.wall {
     animation-name: wallAnimation;
     animation-duration: 0.3s;
     animation-timing-function: ease-out;
@@ -7,7 +7,7 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-play-state: running;
-  }
+}
   
 @keyframes wallAnimation {
     0% {
@@ -34,8 +34,61 @@
     background: orange;
 }
 
+.visited {
+    animation-name: visitedAnimation;
+    animation-duration: 0.5;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(.3);
+        background-color: orange;
+      }
+    
+      50% {
+        transform: scale(1.2);
+        background-color: orange;
+      }
+    
+      100% {
+        transform: scale(1.0);
+        background-color: orange;
+      }
+}
+
 .inpath {
-    background: orangered;
+    animation-name: inpathAnimation;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes inpathAnimation {
+    0% {
+        transform: scale(.3);
+        background-color: orangered;
+      }
+    
+      50% {
+        transform: scale(1.2);
+        background-color: orangered;
+      }
+    
+      100% {
+        transform: scale(1.0);
+        background-color: orangered;
+      }
 }
 
 .start {
@@ -52,8 +105,12 @@
     // position: absolute;
     // top: 0;
     // left: 0;
-    // height: 100%;
-    // width: 100%;
+    min-height: 40vh;
+    min-width: 30vw;
+    max-width: 60vw;
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .middle {
@@ -64,7 +121,8 @@
 .inner {
     margin-left: auto;
     margin-right: auto;
-    width: 50px;
+    height: 2vh;
+    width: 2vw;
     border-style: groove;
     /*whatever width you want*/
 }

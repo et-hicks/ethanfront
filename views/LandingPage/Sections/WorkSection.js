@@ -139,7 +139,7 @@ export default function WorkSection() {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary" onClick={submitForm}>Send Message</Button>
+                <Button color="transparent" onClick={submitForm}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
