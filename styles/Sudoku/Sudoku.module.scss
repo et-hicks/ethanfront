@@ -1,0 +1,25 @@
+.everyThreeCell {
+    border-right: 3px solid black !important;
+}
+
+.rowModThree {
+    border-bottom: 3px solid black;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    min-width: 3vw;
+    min-height: 3vw;
+    text-align: center;
+}
+
+.rowNotThree {
+    border-bottom: none;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+    min-width: 3vw;
+    min-height: 3vw;
+    text-align: center;
+}
+
