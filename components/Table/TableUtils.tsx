@@ -89,7 +89,7 @@ const modifyGraph = (g: Graph, row: number, col: number, w_v: string, bool: bool
 
 // exported for path finding
 const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows: number, cols: number): string[] => {
-    console.log(graph);
+    // console.log(graph);
     const startHash = pointToHash(start);
     const goalHash = pointToHash(goal);
     // This should be a min heap, or something similar
@@ -100,6 +100,7 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
         node: graph[startHash],
         gNumber: 0,
         fNumber: h(start, goal),
+        distance: dis(start, goal)
     }
     openSet.push(startSet);
     
@@ -113,31 +114,49 @@ const AStar = (graph: Graph, start: number[], goal: number[], h: Function, rows:
 
     while (openSet.length > 0) {
         // smallest fScore value first
-        const { node, gNumber, fNumber} = openSet.shift();
+        const { node, gNumber, fNumber, distance} = openSet.shift();
 
         if (node.pointHash === goalHash) {
             return reconstructPath(cameFrom, node.pointHash);
         }
 
         for (let neighbor of node.neighbors) {
-            console.log(neighbor, node.neighbors, gScore[neighbor]);
+            // console.log(neighbor, node.neighbors, gScore[neighbor]);
             if (graph[neighbor].wall) continue // Can't add walls 
-            const tentative_gScore = gNumber + 1 // d is always 1
-            if (tentative_gScore < gScore[neighbor] || gScore[neighbor] === undefined) {
+            // console.log(graph[neighbor].point, node.point, openSet);
+            const distance = dis(graph[neighbor].point, start);
+            const tentative_gScore = gNumber + distance; // d is always 1
+            
+            if (gScore[neighbor] === undefined) gScore[neighbor] = Number.POSITIVE_INFINITY;
+
+
+            if (tentative_gScore < gScore[neighbor]) {
+                
                 cameFrom.set(neighbor, node.pointHash);
                 gScore[neighbor] = tentative_gScore;
                 fScore[neighbor] = gScore[neighbor] + h(graph[neighbor].point, goal);
+                
+                console.log("considered: ", neighbor, gScore[neighbor], fScore[neighbor], gNumber, tentative_gScore, distance);
+
                 if (!inOpenSet(openSet, neighbor)) {
                     const neighborNode: SetType = {
                         node: graph[neighbor],
                         gNumber: tentative_gScore,
-                        fNumber: gScore[neighbor] + h(graph[neighbor].point, goal)
-                    }
-                    openSet.push(neighborNode)
+                        fNumber: gScore[neighbor] + h(graph[neighbor].point, goal),
+                        distance: distance
+                    };
+                    openSet.push(neighborNode);
                     // This is why we need minHeaps
                     openSet.sort((a: SetType, b: SetType) => {
-                        return a.fNumber > b.fNumber ? 1 : -1; 
-                    })
+                        return a.fNumber <= b.fNumber ? 1 : -1; 
+                        // if (a.fNumber > b.fNumber) {
+                        //     return 1
+                        // } else if (a.fNumber < b.fNumber) {
+                        //     return -1
+                        // } else if (a.fNumber === b.fNumber) {
+
+                        // }
+                    });
                 }
             }
         }
@@ -174,7 +193,20 @@ const pointToHash = (point: number[]): string => {
 
 const disanceHeuristic = (start: number[], goal: number[]): number => {
     // manhatten distance OR the L1 norm
-    return (start[0] - goal[0]) + (start[1] - goal[1])
+    const dis = Math.abs((start[0] - goal[0])) + Math.abs((start[1] - goal[1]))
+    // console.log(dis);
+    return dis
+}
+
+const dis = (start: number[], goal: number[]): number => {
+
+    const x = Math.pow((start[0] - goal[0]), 2);
+    const y = Math.pow((start[1] - goal[1]), 2);
+    // const dis = Math.sqrt(x + y);
+
+    // console.log(dis);
+
+    return x + y
 }
 
 
