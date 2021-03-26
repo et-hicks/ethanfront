@@ -29,7 +29,7 @@ export default function HeaderLinks(props) {
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
-          buttonText="Components"
+          buttonText="Pages"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"
@@ -41,7 +41,10 @@ export default function HeaderLinks(props) {
             </Link>,
             <Link href="/path-finding">
               <a className={classes.dropdownLink}>Path Finding</a>
-            </Link>
+            </Link>,
+            <Link href="/sudoku">
+            <a className={classes.dropdownLink}>Sudoku Solver</a>
+          </Link>
           ]}
         />
       </ListItem>
@@ -51,6 +54,15 @@ export default function HeaderLinks(props) {
           className={classes.navLink}
         >
           <CloudDownload className={classes.icons} /> Path Finder
+        </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link href="/sudoku">
+        <Button
+          className={classes.navLink}
+        >
+          <CloudDownload className={classes.icons} /> Sudoku Solver
         </Button>
         </Link>
       </ListItem>
