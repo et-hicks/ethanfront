@@ -39,6 +39,9 @@ export default function HeaderLinks(props) {
             <Link href="/" >
               <a className={classes.dropdownLink}>Home Page</a>
             </Link>,
+            <Link href="/resume">
+            <a className={classes.dropdownLink}>Resume</a>
+          </Link>,
             <Link href="/path-finding">
               <a className={classes.dropdownLink}>Path Finding</a>
             </Link>,
@@ -47,6 +50,15 @@ export default function HeaderLinks(props) {
           </Link>
           ]}
         />
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link href="/resume">
+        <Button
+          className={classes.navLink}
+        >
+          Resume
+        </Button>
+        </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Link href="/path-finding">

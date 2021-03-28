@@ -55,7 +55,7 @@ export default function ProductSection() {
           </h5>
           <h5 className={ProductSectionStyles.description}>
             Lets talk about the stack of the website. For the sake of brevity, let's call it the FERNN stack.
-            Just to point out, no technologies below endorse this site. 
+            Just to point out, no technologies below endorse this site. For more about me, check out my <span className={ProductSectionStyles.links}><Link href="/resume">resume</Link></span>
           </h5>
         </GridItem>
       </GridContainer>
