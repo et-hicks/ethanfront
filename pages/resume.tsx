@@ -116,11 +116,11 @@ export default function Resume() {
             </h5>
             <br />
             <ul className={ResumeStyles.paragraphs}>
-                <li>Boosted average user retention by 50% (10 mins) over 3 months by creating movable avatars embedded with user video streams to make conversations easier and more personable, overall increasing customer satisfaction and leading directly to new user sign ups as the platform spreads</li>
+                <li>Engineered Varty.io data analytics measured by creating and managing a new NoSQL database to fill up with user tracking data by implementing user interaction and conversation tracking across every major website page</li>
                 <br />
-                <li>Reduced page load time by 100 to 1500 milliseconds in 2 weeks by integrating WebPack and Cloudflare onto the platform, further providing quick, reliable access to Varty.io from around the globe through Cloudflare’s CDN</li>
+                <li>Gained dozens of new clients over 4 months by querying and providing KPIs in both numeric and graphed forms</li>
                 <br />
-                <li>Eliminated wasted server storage by 40% (20mb per room across hundreds of rooms) by implementing WebSocket-based client-server communication to monitor user disconnects, reducing overall monthly server costs by 5%, and creating a platform to monitor connection issues, reducing disconnect probability by 60%</li>
+                <li>Trained two interns to develop and program web scraping software, resulting in 30K+ more business and marketing leads for the sales representatives to connect with, successfully making at least 10 connections with potential investors</li>
             </ul>
             <h4 >
                 <div style={{float: "left", color: "#3C4858"}}> CS 61B: Algorithms and Data Structures</div>
