@@ -29,21 +29,23 @@ export default function Resume() {
                     <h4 style={{color: "#3C4858"}}>Programming Languages</h4>
                     <p className={ResumeStyles.paragraphs}>
                         <table >
-                            <tr>
-                                <td>Python&nbsp;</td>
-                                <td>Typescript</td>
-                                <td>Go</td>
-                            </tr>
-                            <tr >
-                                <td>Javascript&nbsp;</td>
-                                <td>C/C++ </td>
-                                <td>Java</td>
-                            </tr>
-                            <tr>
-                                <td>Verilog&nbsp;</td>
-                                <td>Swift</td>
-                                <td>Bash</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>Python&nbsp;</td>
+                                    <td>Typescript</td>
+                                    <td>Go</td>
+                                </tr>
+                                <tr >
+                                    <td>Javascript&nbsp;</td>
+                                    <td>C/C++ </td>
+                                    <td>Java</td>
+                                </tr>
+                                <tr>
+                                    <td>Verilog&nbsp;</td>
+                                    <td>Swift</td>
+                                    <td>Bash</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </p>
                 </div>
@@ -52,6 +54,7 @@ export default function Resume() {
                     <p className={ResumeStyles.paragraphs}>
 
                     <table >
+                            <tbody>
                             <tr>
                                 <td>OpenCV&nbsp;</td>
                                 <td>Flask</td>
@@ -67,6 +70,7 @@ export default function Resume() {
                                 <td>Express</td>
                                 <td>Node</td>
                             </tr>
+                            </tbody>
                         </table>
                     </p>
                 </div>
@@ -74,6 +78,7 @@ export default function Resume() {
                     <h4 style={{color: "#3C4858"}}>Technologies</h4>
                     <p className={ResumeStyles.paragraphs}>
                         <table >
+                            <tbody>
                             <tr>
                                 <td >Git/GitHub</td>
                                 <td >&nbsp;Docker</td>
@@ -89,6 +94,7 @@ export default function Resume() {
                                 <td >&nbsp;pip</td>
                                 <td >GCP/AWS</td> 
                             </tr>
+                            </tbody>
                         </table>
                   </p>
                 </div>

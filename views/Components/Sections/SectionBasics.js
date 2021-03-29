@@ -1,6 +1,6 @@
 import React from "react";
 // plugin that creates slider
-import Slider from "nouislider"; // try again // and again
+import Slider from "nouislider"; 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
