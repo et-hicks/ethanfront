@@ -55,11 +55,6 @@ export default function Talking(props: TalkingProps) {
         const myVideo = document.createElement('video');
         myVideo.muted = true;
         
-        if (typeof navigator === 'undefined') {
-            var navigator = {};
-        }
-
-        // @ts-ignore
         navigator.mediaDevices.getUserMedia({
             video: true,
             audio: true
