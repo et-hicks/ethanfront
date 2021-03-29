@@ -204,11 +204,11 @@ export default function WebPaint() {
 
     useEffect(() => {
 
-        if (pointerDown) canvasRef.current.addEventListener("mousemove", mouseMoving)
+        if (pointerDown) canvasRef.current.addEventListener("pointermove", mouseMoving)
 
         return () => {
             // clearInterval(paintFunc);
-            if (pointerDown) canvasRef.current.removeEventListener("mousemove", mouseMoving)
+            if (pointerDown) canvasRef.current.removeEventListener("pointermove", mouseMoving)
         }
     }, [pointerDown])
 
