@@ -43,11 +43,14 @@ export default function HeaderLinks(props) {
             <a className={classes.dropdownLink}>Resume</a>
           </Link>,
             <Link href="/path-finding">
-              <a className={classes.dropdownLink}>Path Finding</a>
+              <a className={classes.dropdownLink}>Path Finder</a>
             </Link>,
             <Link href="/sudoku">
             <a className={classes.dropdownLink}>Sudoku Solver</a>
-          </Link>
+          </Link>,
+          <Link href="/paint">
+          <a className={classes.dropdownLink}>Paint</a>
+        </Link>
           ]}
         />
       </ListItem>
@@ -65,7 +68,7 @@ export default function HeaderLinks(props) {
         <Button
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Path Finder
+          {/* <CloudDownload className={classes.icons} /> */}Path Finder
         </Button>
         </Link>
       </ListItem>
@@ -74,7 +77,16 @@ export default function HeaderLinks(props) {
         <Button
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Sudoku Solver
+          {/* <CloudDownload className={classes.icons} /> */}Sudoku Solver 
+        </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Link href="/paint">
+        <Button
+          className={classes.navLink}
+        >
+          {/* <CloudDownload className={classes.icons} />*/} Paint 
         </Button>
         </Link>
       </ListItem>

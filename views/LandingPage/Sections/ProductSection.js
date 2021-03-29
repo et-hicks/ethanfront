@@ -41,6 +41,15 @@ export default function ProductSection() {
             automatic solution generation of any puzzle. 
           </h5>
         </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <h2 className={ProductSectionStyles.title}>Paint</h2>
+          <h5 className={ProductSectionStyles.description}>
+            <Link href="/paint"><span style={{color: "blue", cursor: "pointer"}}>Paint</span></Link> is a simple way for anyone to draw in the browser. I had a free afternoon full of 
+            nostagia of the days of painting on MS Paint. I wanted to recreate it. While not fully fleshed out, you can upload an image, draw on top of it with three different 
+            brush styles, and then download it. Or draw from scratch on a clean slate. Maybe in the future I will come back to it and make it fully fleshed out, but for now it is fully functional, 
+            with all its limited features. 
+          </h5>
+        </GridItem>
       </GridContainer>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
@@ -76,7 +85,7 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Nextjs"
-              description="While React offers amazing functionality, it lacks on SEO capabilities. To appear high on Google, Nextjs offers the very best. Futhermore, Nextjs's caching capabilites mean time to first byte is as fast as possible so site functionality begins as soon as possible."
+              description="While React offers amazing functionality, it lacks on SEO capabilities. To appear high on Google, Nextjs offers the very best. Futhermore, Nextjs's caching capabilites make time to first byte as fast as possible so site functionality begins as soon as possible."
               stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2Fnext-js-seeklogo.com.svg?alt=media&token=3f9d5d9c-1723-4ea0-9647-8c0c5242dbf2"
               height={100}
               width={100}
@@ -98,7 +107,7 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Nodejs"
-              description="Full Stack Javascript might not work in every instance, and certanly doesnt even work in every instance on this site, but its quick, easy, and works in a pinch"
+              description="Full Stack Javascript might not work in every instance, and certanly doesnt even work in every instance on this site, but it's quick, easy, and works in a pinch"
               stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FNodejs.png?alt=media&token=418de48b-193b-4ecb-ace8-64933558133e"
               height={60}
               width={100}
@@ -109,7 +118,7 @@ export default function ProductSection() {
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
               title="Express"
-              description="What even is Full Stack Javascript without express on the backend? The two go hand in hand, and its difficult to use one without the other. "
+              description="What even is Full Stack Javascript without Express on the backend? The two go hand in hand, and its difficult to use one without the other. "
               stringImg="https://firebasestorage.googleapis.com/v0/b/ethan-hicks.appspot.com/o/baseImages%2FExpressjs.png?alt=media&token=bd3c0ae0-c97d-4305-b882-bb0bc7aa59b7"
               height={30}
               width={100}
